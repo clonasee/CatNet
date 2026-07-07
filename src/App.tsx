@@ -7,9 +7,13 @@ import { NetworkMap } from "./components/NetworkMap";
 import { DeviceBuilder } from "./components/DeviceBuilder";
 import { IncidentModal } from "./components/IncidentModal";
 import { FeedbackModal } from "./components/FeedbackModal";
+import { WinScreen } from "./components/WinScreen";
+import { TierBanner } from "./components/TierBanner";
 import { createDevice } from "./game/deviceManager";
 import { spawnIncident, resolveIncident } from "./game/incidentEngine";
 import { INCIDENT_DEFINITIONS } from "./data/incidents";
+import { defaultGameState } from "./game/saveSystem";
+import { deleteSave } from "./game/saveSystem";
 import type { Device, DeviceType, Incident } from "./types";
 
 interface FeedbackState {
@@ -20,7 +24,7 @@ interface FeedbackState {
 }
 
 function App() {
-  const { gameState, updateGameState } = useGameState();
+  const { gameState, updateGameState, setGameState } = useGameState();
   const [selectedDevice, setSelectedDevice] = useState<Device | null>(null);
   const [activeIncident, setActiveIncident] = useState<Incident | null>(null);
   const [feedback, setFeedback] = useState<FeedbackState | null>(null);
@@ -62,7 +66,12 @@ function App() {
 
   // Tier progression
   useEffect(() => {
-    const thresholds: Record<number, number> = { 1: 100, 2: 300, 3: 600 };
+    const thresholds: Record<number, number> = {
+      1: 100,
+      2: 300,
+      3: 600,
+      4: 1000,
+    };
     const nextTier = (gameState.tier + 1) as 2 | 3 | 4 | 5;
     if (
       nextTier <= 5 &&
@@ -74,7 +83,6 @@ function App() {
 
   const handleBuild = useCallback(
     (type: DeviceType) => {
-      const def = { baseCost: 50 };
       const costs: Record<string, number> = {
         "purrtocol-router": 50,
         "meowdns-server": 75,
@@ -149,6 +157,17 @@ function App() {
     [gameState],
   );
 
+  const handleReset = useCallback(() => {
+    deleteSave();
+    setGameState({
+      ...defaultGameState,
+      startedAt: Date.now(),
+      lastSavedAt: Date.now(),
+    });
+  }, []);
+
+  const hasWon = gameState.tier >= 5;
+
   return (
     <div className="app">
       <header className="app-header">
@@ -160,6 +179,9 @@ function App() {
           <span>Tier: {gameState.tier}</span>
         </div>
       </header>
+
+      <TierBanner tier={gameState.tier} influence={gameState.influence} />
+
       <main className="app-main">
         <NetworkMap
           devices={gameState.devices}
@@ -193,6 +215,8 @@ function App() {
           onClose={() => setFeedback(null)}
         />
       )}
+
+      {hasWon && <WinScreen gameState={gameState} onReset={handleReset} />}
     </div>
   );
 }
