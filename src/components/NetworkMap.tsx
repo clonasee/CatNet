@@ -82,7 +82,7 @@ export function NetworkMap({ devices, onDeviceClick }: NetworkMapProps) {
               <circle
                 cx={device.x}
                 cy={device.y}
-                r={28}
+                r={32}
                 fill="none"
                 stroke={color}
                 strokeWidth="1"
@@ -92,7 +92,7 @@ export function NetworkMap({ devices, onDeviceClick }: NetworkMapProps) {
               <circle
                 cx={device.x}
                 cy={device.y}
-                r={22}
+                r={26}
                 fill="#16213e"
                 stroke={color}
                 strokeWidth="2"
@@ -100,18 +100,18 @@ export function NetworkMap({ devices, onDeviceClick }: NetworkMapProps) {
               {/* Incident indicator dot */}
               {device.incidentId && (
                 <circle
-                  cx={device.x + 16}
-                  cy={device.y - 16}
-                  r={6}
+                  cx={device.x + 19}
+                  cy={device.y - 19}
+                  r={7}
                   fill="#ff4444"
                 />
               )}
               {/* Device type abbreviation */}
               <text
                 x={device.x}
-                y={device.y + 5}
+                y={device.y + 6}
                 textAnchor="middle"
-                fontSize="11"
+                fontSize="13"
                 fontWeight="bold"
                 fill={color}
                 fontFamily="Courier New, monospace"
@@ -121,9 +121,9 @@ export function NetworkMap({ devices, onDeviceClick }: NetworkMapProps) {
               {/* Device name label */}
               <text
                 x={device.x}
-                y={device.y + 42}
+                y={device.y + 48}
                 textAnchor="middle"
-                fontSize="10"
+                fontSize="11"
                 fill="#888"
                 fontFamily="Courier New, monospace"
               >
