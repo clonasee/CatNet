@@ -1,14 +1,20 @@
 // Decorative floating paw print background animation
 // Pure CSS animation, no impact on game logic
 
+import { useMemo } from "react";
+
 export function PawPrints() {
-  const paws = Array.from({ length: 12 }, (_, i) => ({
-    id: i,
-    left: `${Math.random() * 100}%`,
-    delay: `${Math.random() * 15}s`,
-    duration: `${12 + Math.random() * 10}s`,
-    size: `${0.8 + Math.random() * 1.2}rem`,
-  }));
+  const paws = useMemo(
+    () =>
+      Array.from({ length: 12 }, (_, i) => ({
+        id: i,
+        left: `${(i / 12) * 100}%`,
+        delay: `${i * 1.5}s`,
+        duration: `${14 + (i % 4) * 3}s`,
+        size: `${0.9 + (i % 3) * 0.4}rem`,
+      })),
+    [],
+  );
 
   return (
     <div className="paw-container">
@@ -23,7 +29,7 @@ export function PawPrints() {
             fontSize: paw.size,
           }}
         >
-          🐾
+          ^..^
         </div>
       ))}
     </div>

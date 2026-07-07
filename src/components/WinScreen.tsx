@@ -30,6 +30,18 @@ export function WinScreen({ gameState, onReset }: WinScreenProps) {
     <div className="win-overlay">
       <div className="win-screen">
         <div className="win-title">GLOBAL FELINE INTERNET</div>
+        <div className="win-cat">
+          {`
+    /\\_/\\ 
+   ( ^.^ ) 
+    > ^ <  
+   /|   |\\  
+  (_|   |_)
+  `}
+        </div>
+        <div className="win-cat-caption">
+          The internet belongs to the cats now.
+        </div>
         <div className="win-subtitle">
           The cats have won. The internet is theirs now.
         </div>

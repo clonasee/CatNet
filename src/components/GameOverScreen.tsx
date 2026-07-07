@@ -22,6 +22,16 @@ export function GameOverScreen({ gameState, onReset }: GameOverScreenProps) {
     <div className="win-overlay">
       <div className="win-screen game-over-screen">
         <div className="game-over-title">NETWORK OFFLINE</div>
+        <div className="win-cat game-over-cat">
+          {`
+    /\\_/\\  
+   ( x.x ) 
+    > - <  
+   /|   |\\  
+  (_|   |_)
+  `}
+        </div>
+        <div className="win-cat-caption">The network has gone dark.</div>
         <div className="win-subtitle">
           The dogs have won. The cat network has fallen.
         </div>
