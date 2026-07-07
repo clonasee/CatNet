@@ -3,8 +3,6 @@
 
 import { useState, useEffect } from "react";
 
-const CATS = ["-|--/--", "  /\\_/\\  ", " ( >.< ) ", "  > ^ <  "];
-
 const WALKING_FRAMES = [
   `  /\\_/\\  
  ( -.o ) ~
