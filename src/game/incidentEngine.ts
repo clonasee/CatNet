@@ -42,7 +42,7 @@ const TIER_INCIDENTS: Record<number, IncidentType[]> = {
 export function spawnIncident(
   devices: Device[],
   tier: number,
-  existingIncidents: Incident[],
+  _existingIncidents: Incident[],
 ): Incident | null {
   const healthyDevices = devices.filter((d) => !d.incidentId);
   if (healthyDevices.length === 0) return null;

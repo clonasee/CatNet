@@ -1,7 +1,7 @@
 // Panel for purchasing and placing new devices onto the network map
 // Shows available devices, their costs, and handles placement logic
 
-import type { Device, DeviceType } from "../types";
+import type { DeviceType } from "../types";
 import { DEVICE_DEFINITIONS } from "../data/devices";
 
 interface DeviceBuilderProps {
