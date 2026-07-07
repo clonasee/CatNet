@@ -1,7 +1,7 @@
 // this file handles saving and loading the game state to local storage
 // all the persistence logic is here
 
-import { GameState } from "../types";
+import type { GameState } from "../types";
 
 const SAVE_KEY = "catnet-save";
 const CURRENT_VERSION = 1;
@@ -33,7 +33,7 @@ export function saveGame(state: GameState): void {
 
 export function loadGame(): GameState | null {
   try {
-    const raw = localStorage.getitem(SAVE_KEY);
+    const raw = localStorage.getItem(SAVE_KEY);
     if (!raw) return null;
 
     const parsed = JSON.parse(raw) as GameState;
@@ -46,6 +46,7 @@ export function loadGame(): GameState | null {
     return parsed;
   } catch (e) {
     console.error("CatNet: failed to load save", e);
+    return null;
   }
 }
 

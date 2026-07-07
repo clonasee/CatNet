@@ -1,5 +1,5 @@
-// TypeScript interfaces and types for CatNet game
-// basically a game state contract where all the data flows through these 'shapes'
+// Core TypeScript interfaces and types for CatNet
+// This is the GameState contract — all game data flows through these shapes
 
 export type Tier = 1 | 2 | 3 | 4 | 5;
 
@@ -18,28 +18,28 @@ export type IncidentType =
   | "pawwall-misconfiguration"
   | "unauthorized-dog-access"
   | "broken-cat5"
-  | "catnit-cloud-crash"
+  | "catnip-cloud-crash"
   | "network-congestion"
   | "ddos-attack"
   | "catphishing-campaign";
 
 export type Severity = "low" | "medium" | "high";
 
-export type IncidentStatus = "active" | "resolved" | "escalating";
+export type IncidentStatus = "active" | "resolved" | "escalated";
 
 export interface Device {
-  id: String;
+  id: string;
   type: DeviceType;
-  name: String;
+  name: string;
   x: number;
   y: number;
   health: number;
   upgraded: boolean;
-  incidentId: String | null;
+  incidentId: string | null;
 }
 
 export interface Incident {
-  id: String;
+  id: string;
   type: IncidentType;
   severity: Severity;
   status: IncidentStatus;

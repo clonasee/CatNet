@@ -2,7 +2,7 @@
 // Loads from localStorage on mount and auto-saves whenever state is changed
 
 import { useState, useEffect, useCallback } from "react";
-import { GameState } from "../types";
+import type { GameState } from "../types";
 import { saveGame, loadGame, defaultGameState } from "../game/saveSystem";
 
 export function useGameState() {
