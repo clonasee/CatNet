@@ -505,3 +505,93 @@ body {
   border-color: var(--accent-red);
   color: var(--accent-red);
 }
+
+/* Device pulse and flicker animations */
+@keyframes devicePulse {
+  0%,
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 4px #00ff88);
+  }
+  50% {
+    opacity: 0.85;
+    filter: drop-shadow(0 0 8px #00ff88);
+  }
+}
+
+@keyframes deviceFlicker {
+  0%,
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 4px #ff4444);
+  }
+  25% {
+    opacity: 0.6;
+    filter: drop-shadow(0 0 2px #ff4444);
+  }
+  50% {
+    opacity: 0.9;
+    filter: drop-shadow(0 0 8px #ff4444);
+  }
+  75% {
+    opacity: 0.5;
+    filter: drop-shadow(0 0 2px #ff4444);
+  }
+}
+
+@keyframes deviceWarn {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 4px #ffd700);
+  }
+  50% {
+    filter: drop-shadow(0 0 10px #ffd700);
+  }
+}
+
+.device-healthy {
+  animation: devicePulse 3s ease-in-out infinite;
+}
+
+.device-warning {
+  animation: deviceWarn 1.5s ease-in-out infinite;
+}
+
+.device-incident {
+  animation: deviceFlicker 0.8s ease-in-out infinite;
+}
+
+/* Floating paw prints */
+.paw-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.paw {
+  position: absolute;
+  font-size: 1.2rem;
+  opacity: 0;
+  animation: pawFloat linear infinite;
+  color: #ffffff08;
+  user-select: none;
+}
+
+@keyframes pawFloat {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}

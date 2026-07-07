@@ -77,6 +77,13 @@ export function NetworkMap({ devices, onDeviceClick }: NetworkMapProps) {
               key={device.id}
               onClick={() => onDeviceClick(device)}
               style={{ cursor: "pointer" }}
+              className={
+                device.incidentId
+                  ? "device-incident"
+                  : device.health > 66
+                    ? "device-healthy"
+                    : "device-warning"
+              }
             >
               {/* Glow ring */}
               <circle

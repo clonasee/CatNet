@@ -15,6 +15,7 @@ import { spawnIncident, resolveIncident } from "./game/incidentEngine";
 import { INCIDENT_DEFINITIONS } from "./data/incidents";
 import { defaultGameState, deleteSave } from "./game/saveSystem";
 import type { Device, DeviceType, Incident } from "./types";
+import { PawPrints } from "./components/PawPrints";
 
 interface FeedbackState {
   correct: boolean;
@@ -174,6 +175,7 @@ function App() {
 
   return (
     <div className="app">
+      <PawPrints />
       <header className="app-header">
         <h1>CatNet</h1>
         <div className="app-resources">
