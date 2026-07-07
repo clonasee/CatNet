@@ -2,9 +2,15 @@
 // Initializes game state and serves as the top level layout container
 
 import { useGameState } from "./hooks/useGameState";
+import { NetworkMap } from "./components/NetworkMap";
+import type { Device } from "./types";
 
 function App() {
-  const { gameState, updateGameState } = useGameState();
+  const { gameState } = useGameState();
+
+  function handleDeviceClick(device: Device) {
+    console.log("clicked device:", device);
+  }
 
   return (
     <div className="app">
@@ -18,7 +24,10 @@ function App() {
         </div>
       </header>
       <main className="app-main">
-        <p>Network map coming soon...</p>
+        <NetworkMap
+          devices={gameState.devices}
+          onDeviceClick={handleDeviceClick}
+        />
       </main>
     </div>
   );
