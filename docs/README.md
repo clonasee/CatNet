@@ -51,12 +51,12 @@ Requirements: Node.js 18+
 
 ```bash
 git clone https://github.com/clonasee/catnet.git
-cd catnet
+cd CatNet
 npm install
 npm run dev
 ```
 
-Open http://localhost:5173/catnet/ in your browser.
+Open http://localhost:5173/CatNet/ in your browser.
 
 ## Deployment
 
@@ -64,7 +64,7 @@ Open http://localhost:5173/catnet/ in your browser.
 npm run deploy
 ```
 
-Deploys to GitHub Pages at https://clonasee.github.io/catnet/
+Deploys to GitHub Pages at https://clonasee.github.io/CatNet/
 
 ## Tech Stack
 
@@ -105,7 +105,3 @@ src/
 | Network Congestion       | Bandwidth saturation          | Upgrade link capacity                 |
 | DDoS Attack              | Distributed denial of service | Enable rate limiting                  |
 | Catphishing Campaign     | Phishing attack               | Quarantine the message source         |
-
-## Video Demo
-
-Link: [INSERT VIDEO LINK AFTER RECORDING]

@@ -93,4 +93,4 @@ src/
 
 ## Deployment
 
-The app is deployed to GitHub Pages using the `gh-pages` npm package. The Vite config sets `base: '/catnet/'` to ensure assets load correctly from the subdirectory. A PWA manifest is included via `vite-plugin-pwa` making the game installable on mobile devices.
+The app is deployed to GitHub Pages using the `gh-pages` npm package. The Vite config sets `base: '/CatNet/'` to ensure assets load correctly from the subdirectory. A PWA manifest is included via `vite-plugin-pwa` making the game installable on mobile devices.
