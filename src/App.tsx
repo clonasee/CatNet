@@ -8,12 +8,12 @@ import { DeviceBuilder } from "./components/DeviceBuilder";
 import { IncidentModal } from "./components/IncidentModal";
 import { FeedbackModal } from "./components/FeedbackModal";
 import { WinScreen } from "./components/WinScreen";
+import { GameOverScreen } from "./components/GameOverScreen";
 import { TierBanner } from "./components/TierBanner";
 import { createDevice } from "./game/deviceManager";
 import { spawnIncident, resolveIncident } from "./game/incidentEngine";
 import { INCIDENT_DEFINITIONS } from "./data/incidents";
-import { defaultGameState } from "./game/saveSystem";
-import { deleteSave } from "./game/saveSystem";
+import { defaultGameState, deleteSave } from "./game/saveSystem";
 import type { Device, DeviceType, Incident } from "./types";
 
 interface FeedbackState {
@@ -164,9 +164,13 @@ function App() {
       startedAt: Date.now(),
       lastSavedAt: Date.now(),
     });
+    setSelectedDevice(null);
+    setActiveIncident(null);
+    setFeedback(null);
   }, []);
 
   const hasWon = gameState.tier >= 5;
+  const hasLost = gameState.networkHealth <= 0;
 
   return (
     <div className="app">
@@ -177,6 +181,9 @@ function App() {
           <span>Influence: {gameState.influence}</span>
           <span>Network Health: {gameState.networkHealth}%</span>
           <span>Tier: {gameState.tier}</span>
+          <button className="header-reset" onClick={handleReset}>
+            New Game
+          </button>
         </div>
       </header>
 
@@ -216,7 +223,13 @@ function App() {
         />
       )}
 
-      {hasWon && <WinScreen gameState={gameState} onReset={handleReset} />}
+      {hasWon && !hasLost && (
+        <WinScreen gameState={gameState} onReset={handleReset} />
+      )}
+
+      {hasLost && (
+        <GameOverScreen gameState={gameState} onReset={handleReset} />
+      )}
     </div>
   );
 }

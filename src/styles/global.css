@@ -447,3 +447,61 @@ body {
   background-color: var(--accent-green);
   color: var(--bg-primary);
 }
+
+/* Game over screen */
+.game-over-screen {
+  border-color: var(--accent-red);
+}
+
+.game-over-title {
+  color: var(--accent-red);
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+.game-over-zero {
+  color: var(--accent-red);
+}
+
+.game-over-reset {
+  background: none;
+  border: 1px solid var(--accent-red);
+  border-radius: 4px;
+  color: var(--accent-red);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.85rem;
+  padding: 12px 32px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.game-over-reset:hover {
+  background-color: var(--accent-red);
+  color: var(--bg-primary);
+}
+
+/* Reset button in header */
+.header-reset {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-muted);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.7rem;
+  padding: 4px 10px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+
+.header-reset:hover {
+  border-color: var(--accent-red);
+  color: var(--accent-red);
+}
